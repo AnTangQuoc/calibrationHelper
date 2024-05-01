@@ -14,8 +14,6 @@
 #'
 #' @family class probability metrics
 #' @templateVar fn cal_intercept
-#' @template return
-#' @template event_first
 #'
 #' @references
 #' Van Calster, B., McLernon, D.J., van Smeden, M. et al. Calibration: 

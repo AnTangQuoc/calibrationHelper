@@ -12,8 +12,6 @@
 #'
 #' @family class probability metrics
 #' @templateVar fn cal_slope
-#' @template return
-#' @template event_first
 #'
 #' @references
 #' Van Calster, B., McLernon, D.J., van Smeden, M. et al. Calibration: 
