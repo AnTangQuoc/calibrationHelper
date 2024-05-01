@@ -1,3 +1,30 @@
+#' Calibration-in-the-large
+#'
+#' @description
+#' `cal_intercept()` is a metric that computes the calibration-in-the-large.
+#'
+#' @details
+#' Calibration-in-the-large compares the average predicted risk with the 
+#' overall event rate. When the average predicted risk is higher than the 
+#' overall event rate, the model overestimates risk in general. Conversely, 
+#' underestimation occurs when the observed event rate is higher than the 
+#' average predicted risk. The calibration intercept, which is an assessment 
+#' of calibration-in-the-large, has a target value of 0; negative values 
+#' suggest overestimation, whereas positive values suggest underestimation.
+#'
+#' @family class probability metrics
+#' @templateVar fn cal_intercept
+#' @template return
+#' @template event_first
+#'
+#' @references
+#' Van Calster, B., McLernon, D.J., van Smeden, M. et al. Calibration: 
+#' the Achilles heel of predictive analytics. BMC Med 17, 230 (2019). 
+#' https://doi.org/10.1186/s12916-019-1466-7
+#'
+#' @author An Tang
+#'
+#' @export
 cal_intercept <- function(data, ...) {
   UseMethod("cal_intercept")
 }
@@ -6,6 +33,8 @@ cal_intercept <- yardstick::new_prob_metric(
   direction = "zero"
 )
 
+#' @export
+#' @rdname cal_intercept
 cal_intercept.data.frame <- function(data,
                                      truth,
                                      ...,
@@ -26,6 +55,8 @@ cal_intercept.data.frame <- function(data,
   )
 }
 
+#' @rdname cal_intercept
+#' @export
 cal_intercept_vec <- function(truth,
                               estimate,
                               estimator = NULL,

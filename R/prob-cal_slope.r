@@ -1,3 +1,28 @@
+#' Calibration slope
+#'
+#' @description
+#' `cal_slope()` is a metric that computes the calibration slope.
+#'
+#' @details
+#' The calibration slope evaluates the spread of the estimated risks and has a 
+#' target value of 1. A slope < 1 suggests that estimated risks are too extreme, 
+#' i.e., too high for patients who are at high risk and too low for patients 
+#' who are at low risk. A slope > 1 suggests the opposite, i.e., that risk 
+#' estimates are too moderate.
+#'
+#' @family class probability metrics
+#' @templateVar fn cal_slope
+#' @template return
+#' @template event_first
+#'
+#' @references
+#' Van Calster, B., McLernon, D.J., van Smeden, M. et al. Calibration: 
+#' the Achilles heel of predictive analytics. 
+#' BMC Med 17, 230 (2019). https://doi.org/10.1186/s12916-019-1466-7
+#'
+#' @author An Tang
+#'
+#' @export
 cal_slope <- function(data, ...) {
   UseMethod("cal_slope")
 }
@@ -6,6 +31,8 @@ cal_slope <- yardstick::new_prob_metric(
   direction <- "zero"
 )
 
+#' @export
+#' @rdname cal_slope
 cal_slope.data.frame <- function(data,
                                  truth,
                                  ...,
@@ -26,6 +53,8 @@ cal_slope.data.frame <- function(data,
   )
 }
 
+#' @rdname cal_slope
+#' @export
 cal_slope_vec <- function(truth,
                           estimate,
                           estimator = NULL,
